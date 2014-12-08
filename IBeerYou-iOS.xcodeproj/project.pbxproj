@@ -24,6 +24,8 @@
 		59BAEB631A23C29E00C031B8 /* TableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59BAEB4F1A23C29E00C031B8 /* TableHeaderView.xib */; };
 		59BAEB641A23C29E00C031B8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59BAEB511A23C29E00C031B8 /* InfoPlist.strings */; };
 		59BAEB661A23C29E00C031B8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BAEB551A23C29E00C031B8 /* main.m */; };
+		59BFD0FF1A3657A5002BC972 /* NewBeerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BFD0FE1A3657A5002BC972 /* NewBeerViewController.m */; };
+		59BFD1011A36599A002BC972 /* BeersListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BFD1001A36599A002BC972 /* BeersListViewController.m */; };
 		6D10F48316DD68E000690A0F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D10F48216DD68E000690A0F /* CoreLocation.framework */; };
 		8103BCCD19AD1F8900BCF4C7 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8103BCCB19AD1F8900BCF4C7 /* Bolts.framework */; };
 		8103BCCE19AD1F8900BCF4C7 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8103BCCC19AD1F8900BCF4C7 /* ParseFacebookUtils.framework */; };
@@ -64,6 +66,10 @@
 		59BAEB531A23C29E00C031B8 /* IBeerYou-iOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IBeerYou-iOS-Info.plist"; sourceTree = "<group>"; };
 		59BAEB541A23C29E00C031B8 /* IBeerYou-iOS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IBeerYou-iOS-Prefix.pch"; sourceTree = "<group>"; };
 		59BAEB551A23C29E00C031B8 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		59BFD0FC1A364D89002BC972 /* BeersListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeersListViewController.h; sourceTree = "<group>"; };
+		59BFD0FD1A36574F002BC972 /* NewBeerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewBeerViewController.h; sourceTree = "<group>"; };
+		59BFD0FE1A3657A5002BC972 /* NewBeerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewBeerViewController.m; sourceTree = "<group>"; };
+		59BFD1001A36599A002BC972 /* BeersListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeersListViewController.m; sourceTree = "<group>"; };
 		6D10F48216DD68E000690A0F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8103BCCB19AD1F8900BCF4C7 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		8103BCCC19AD1F8900BCF4C7 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -114,8 +120,12 @@
 			children = (
 				59BAEB3E1A23C29E00C031B8 /* AppDelegate.h */,
 				59BAEB3F1A23C29E00C031B8 /* AppDelegate.m */,
+				59BFD0FC1A364D89002BC972 /* BeersListViewController.h */,
+				59BFD1001A36599A002BC972 /* BeersListViewController.m */,
 				59BAEB401A23C29E00C031B8 /* LoginViewController.h */,
 				59BAEB411A23C29E00C031B8 /* LoginViewController.m */,
+				59BFD0FD1A36574F002BC972 /* NewBeerViewController.h */,
+				59BFD0FE1A3657A5002BC972 /* NewBeerViewController.m */,
 				59BAEB421A23C29E00C031B8 /* UserDetailsViewController.h */,
 				59BAEB431A23C29E00C031B8 /* UserDetailsViewController.m */,
 			);
@@ -284,9 +294,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59BFD1011A36599A002BC972 /* BeersListViewController.m in Sources */,
 				59BAEB581A23C29E00C031B8 /* UserDetailsViewController.m in Sources */,
 				59BAEB571A23C29E00C031B8 /* LoginViewController.m in Sources */,
 				59BAEB661A23C29E00C031B8 /* main.m in Sources */,
+				59BFD0FF1A3657A5002BC972 /* NewBeerViewController.m in Sources */,
 				59BAEB561A23C29E00C031B8 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

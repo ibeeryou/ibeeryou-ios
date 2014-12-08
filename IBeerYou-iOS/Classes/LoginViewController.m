@@ -25,6 +25,7 @@
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 
 #import "UserDetailsViewController.h"
+#import "BeersListViewController.h"
 
 @implementation LoginViewController
 
@@ -47,7 +48,7 @@
 
     // Check if user is cached and linked to Facebook, if so, bypass login
     if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
-        [self _presentUserDetailsViewControllerAnimated:NO];
+        [self _presentBeersListViewControllerAnimated:NO];
     }
 }
 
@@ -83,12 +84,21 @@
             } else {
                 NSLog(@"User with facebook logged in!");
             }
-            [self _presentUserDetailsViewControllerAnimated:YES];
+            [self _presentBeersListViewControllerAnimated:YES];
         }
     }];
 
     [_activityIndicator startAnimating]; // Show loading indicator until login is finished
 }
+
+#pragma mark -
+#pragma mark BeersListViewController
+
+- (void)_presentBeersListViewControllerAnimated:(BOOL)animated {
+    BeersListViewController *beersListViewController = [[BeersListViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [self.navigationController pushViewController:beersListViewController animated:animated];
+}
+
 
 #pragma mark -
 #pragma mark UserDetailsViewController
