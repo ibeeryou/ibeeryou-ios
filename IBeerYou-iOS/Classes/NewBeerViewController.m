@@ -9,25 +9,35 @@
 #import "NewBeerViewController.h"
 #import "Parse/Parse.h"
 
+@interface NewBeerViewController ()
+
+@end
+
 @implementation NewBeerViewController
 
-@synthesize textView;
+@synthesize userPicker;
+@synthesize users =_users;
 
 #pragma mark - View lifecycle
 
 - (void)loadView
 {
     [super loadView];
-    [self setTitle:@"New beer with"];
+
+    //load users
+    _users = [[NSArray alloc] initWithObjects:@"bla", @"chp", @"hlo", nil];
     
-    textView = [[UITextView alloc] initWithFrame:CGRectMake(5, 5, 310, 186)];
-    [textView setFont:[UIFont systemFontOfSize:16]];
-    [textView becomeFirstResponder];
+    [self setTitle:@"New beer with"];
+    userPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
+    userPicker.delegate = self;
+    userPicker.dataSource = self;
+    userPicker.showsSelectionIndicator = YES;
+    
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStyleBordered target:self action:@selector(addButtonTouchHandler:)]];
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonTouchHandler:)]];
-    
-    [self.view addSubview:textView];
+    [self.view addSubview:userPicker];
+
 }
 
 
@@ -39,7 +49,7 @@
     PFObject *newBeer = [PFObject objectWithClassName:@"Beer"];
     
     // TODO : replace with PFUser
-    [newBeer setObject:[textView text] forKey:@"creditor"];
+    [newBeer setObject:[self pickerView:userPicker titleForRow:[userPicker selectedRowInComponent:0] forComponent:0] forKey:@"creditor"];
     
     [newBeer setObject:[PFUser currentUser] forKey:@"debitor"]; // One-to-Many relationship created here!
     
@@ -60,6 +70,23 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil]; // Dismiss the viewController upon cancel
 }
+
+#pragma mark - UIPickerView Methods
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return _users.count;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [_users objectAtIndex:row];
+}
+
 
 @end
 

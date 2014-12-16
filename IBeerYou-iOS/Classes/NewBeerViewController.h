@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewBeerViewController : UIViewController
+@interface NewBeerViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 
-@property (nonatomic, strong) UITextView *textView;
+@property (nonatomic, strong) IBOutlet UIPickerView *userPicker;
+
+@property (nonatomic, strong) NSArray *users;
+
+@property (nonatomic, strong) NSString *selectedUser;
 
 - (void)addButtonTouchHandler:(id)sender;
 - (void)cancelButtonTouchHandler:(id)sender;
