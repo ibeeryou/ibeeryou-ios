@@ -14,8 +14,6 @@
 
 @property (nonatomic, strong) NSArray *users;
 
-@property (nonatomic, strong) NSString *selectedUser;
-
 - (void)addButtonTouchHandler:(id)sender;
 - (void)cancelButtonTouchHandler:(id)sender;
 

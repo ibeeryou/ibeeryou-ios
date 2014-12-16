@@ -24,8 +24,18 @@
 {
     [super loadView];
 
-    //load users
+    //load users with all the users of the database
     _users = [[NSArray alloc] initWithObjects:@"bla", @"chp", @"hlo", nil];
+    PFQuery *query = [PFUser query];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded. The first 100 objects are available in objects
+            NSLog(@"%lu", (unsigned long)objects.count);
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
     
     [self setTitle:@"New beer with"];
     userPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
