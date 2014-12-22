@@ -79,7 +79,7 @@
     
     // Configure the cell with the textContent of the Beer as the cell's text label
     PFObject *beer = [beerArray objectAtIndex:indexPath.row];
-    [cell.textLabel setText:[beer objectForKey:@"creditor"]];
+    [cell.textLabel setText:[[beer objectForKey:@"creditor"] fetchIfNeeded][@"profile"][@"name"]];
     
     return cell;
 }

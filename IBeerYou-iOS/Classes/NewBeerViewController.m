@@ -17,6 +17,7 @@
 
 @synthesize userPicker;
 @synthesize users =_users;
+@synthesize selected_user =_selected_user;
 
 #pragma mark - View lifecycle
 
@@ -61,7 +62,7 @@
     PFObject *newBeer = [PFObject objectWithClassName:@"Beer"];
     
     // TODO : replace with PFUser
-    [newBeer setObject:[self pickerView:userPicker titleForRow:[userPicker selectedRowInComponent:0] forComponent:0] forKey:@"creditor"];
+    [newBeer setObject:_selected_user forKey:@"creditor"];
     
     [newBeer setObject:[PFUser currentUser] forKey:@"debitor"]; // One-to-Many relationship created here!
     
@@ -97,6 +98,7 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     PFUser *user = [_users objectAtIndex:row];
+    _selected_user = user;
     return  user.email;
 }
 
