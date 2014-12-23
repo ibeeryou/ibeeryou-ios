@@ -26,7 +26,6 @@
     [super loadView];
 
     //load users with all the users of the database
-    //_users = [[NSArray alloc] initWithObjects:@"bla", @"chp", @"hlo", nil];
     PFQuery *query = [PFUser query];
     query.limit = 100;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -61,10 +60,9 @@
     // Create a new Beer object and create relationship with PFUser
     PFObject *newBeer = [PFObject objectWithClassName:@"Beer"];
     
-    // TODO : replace with PFUser
-    [newBeer setObject:_selected_user forKey:@"creditor"];
+    [newBeer setObject:_selected_user forKey:@"creditor"];  // add selected PFUser as creditor
     
-    [newBeer setObject:[PFUser currentUser] forKey:@"debitor"]; // One-to-Many relationship created here!
+    [newBeer setObject:[PFUser currentUser] forKey:@"debitor"]; // add current PFUser as debitor
     
     // Set ACL permissions for added security
     PFACL *postACL = [PFACL ACLWithUser:[PFUser currentUser]];

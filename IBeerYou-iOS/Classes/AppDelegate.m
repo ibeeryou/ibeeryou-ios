@@ -25,6 +25,8 @@
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 
 #import "LoginViewController.h"
+#import "BeersListViewController.h"
+#import "UserDetailsViewController.h"
 
 @implementation AppDelegate
 
@@ -43,11 +45,35 @@
     // ****************************************************************************
     [PFFacebookUtils initializeFacebook];
 
+    
     // Override point for customization after application launch.
+    
+    // TODO : Introduce Tab Bar
+    /*
+    self.tabBarController=[[UITabBarController alloc] init];
+    
+    BeersListViewController *beerListViewController = [[BeersListViewController alloc] init];
+    UserDetailsViewController *userDetailsViewController = [[UserDetailsViewController alloc] init];
+    
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects: beerListViewController, userDetailsViewController, nil];
+    
+    UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"Beers" image:[UIImage imageNamed:@"beer.png"] tag:1];
+    [beerListViewController setTabBarItem:item1];
+    
+    UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"Account" image:[UIImage imageNamed:@"account.png"] tag:2];
+    [userDetailsViewController setTabBarItem:item2];
+    
+    self.window.rootViewController = self.tabBarController;
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    */
+    
+    // Fallback: Launching login as root view
+    
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-
+     
     return YES;
 }
 

@@ -19,8 +19,14 @@
  *
  */
 
+#import <UIKit/UIKit.h>
+#import "BeersListViewController.h"
+#import "UserDetailsViewController.h"
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
+
+@property (nonatomic, strong) IBOutlet UITabBarController *tabBarController;
 
 @end
