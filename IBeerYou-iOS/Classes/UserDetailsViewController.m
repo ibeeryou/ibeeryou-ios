@@ -23,6 +23,9 @@
 #import <Parse/Parse.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 
+#import "AppDelegate.h"
+#import "LoginViewController.h"
+
 @implementation UserDetailsViewController
 
 #pragma mark -
@@ -58,7 +61,7 @@
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out"
                                                                      style:UIBarButtonItemStyleBordered
                                                                     target:self
-                                                                    action:@selector(logoutButtonAction:)];
+                                                                   action:@selector(logoutButtonAction:)];
     self.navigationItem.leftBarButtonItem = logoutButton;
     
     [self _loadData];
@@ -96,6 +99,9 @@
     [PFUser logOut];
     
     // Return to login view controller
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    [appDelegate.window setRootViewController:[[LoginViewController alloc] init]];
+    
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

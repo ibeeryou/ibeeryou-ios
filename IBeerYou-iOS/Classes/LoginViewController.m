@@ -24,8 +24,7 @@
 #import <Parse/Parse.h>
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 
-#import "UserDetailsViewController.h"
-#import "BeersListViewController.h"
+#import "AppDelegate.h"
 
 @implementation LoginViewController
 
@@ -48,7 +47,7 @@
 
     // Check if user is cached and linked to Facebook, if so, bypass login
     if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
-        [self _presentBeersListViewControllerAnimated:NO];
+        [self _presentTabBarViewControllerAnimated:NO];
     }
 }
 
@@ -84,7 +83,7 @@
             } else {
                 NSLog(@"User with facebook logged in!");
             }
-            [self _presentBeersListViewControllerAnimated:YES];
+            [self _presentTabBarViewControllerAnimated:YES];
         }
     }];
 
@@ -92,20 +91,12 @@
 }
 
 #pragma mark -
-#pragma mark BeersListViewController
+#pragma mark TabBarViewController
 
-- (void)_presentBeersListViewControllerAnimated:(BOOL)animated {
-    BeersListViewController *beersListViewController = [[BeersListViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    [self.navigationController pushViewController:beersListViewController animated:animated];
+- (void)_presentTabBarViewControllerAnimated:(BOOL)animated {
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    [appDelegate.window setRootViewController:appDelegate.tabBarController];
 }
 
-
-#pragma mark -
-#pragma mark UserDetailsViewController
-
-- (void)_presentUserDetailsViewControllerAnimated:(BOOL)animated {
-    UserDetailsViewController *detailsViewController = [[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    [self.navigationController pushViewController:detailsViewController animated:animated];
-}
 
 @end
