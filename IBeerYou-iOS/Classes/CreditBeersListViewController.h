@@ -1,15 +1,14 @@
 //
-//  BeersListViewController.h
+//  CreditBeersListViewController.h
 //  IBeerYou-iOS
 //
-//  Created by Jean Loup Yu on 08/12/14.
+//  Created by Jean-Loup YU on 29/12/2014.
 //
 //
-
 
 #import <UIKit/UIKit.h>
 
-@interface BeersListViewController : UITableViewController
+@interface CreditBeersListViewController : UITableViewController
 
 @property (nonatomic, strong) NSArray *beerArray;
 
@@ -17,5 +16,3 @@
 - (void)refreshButtonHandler:(id)sender;
 
 @end
-
-

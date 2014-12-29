@@ -25,7 +25,8 @@
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 
 #import "LoginViewController.h"
-#import "BeersListViewController.h"
+#import "DebitBeersListViewController.h"
+#import "CreditBeersListViewController.h"
 #import "UserDetailsViewController.h"
 
 @implementation AppDelegate
@@ -51,20 +52,26 @@
     // Init Tab Bar Controller
     self.tabBarController=[[UITabBarController alloc] init];
     
-    BeersListViewController *beerListViewController = [[BeersListViewController alloc] init];
-    UINavigationController *firstNavigationController = [[UINavigationController alloc] initWithRootViewController:beerListViewController];
+    DebitBeersListViewController *debitBeerListViewController = [[DebitBeersListViewController alloc] init];
+    UINavigationController *firstNavigationController = [[UINavigationController alloc] initWithRootViewController:debitBeerListViewController];
+    
+    CreditBeersListViewController *creditBeerListViewController = [[CreditBeersListViewController alloc] init];
+    UINavigationController *secondNavigationController = [[UINavigationController alloc] initWithRootViewController:creditBeerListViewController];
     
     UserDetailsViewController *userDetailsViewController = [[UserDetailsViewController alloc] init];
-    UINavigationController *secondNavigationController = [[UINavigationController alloc] initWithRootViewController:userDetailsViewController];
+    UINavigationController *thirdNavigationController = [[UINavigationController alloc] initWithRootViewController:userDetailsViewController];
 
     
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects: firstNavigationController, secondNavigationController, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects: firstNavigationController, secondNavigationController, thirdNavigationController, nil];
     
-    UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"Beers" image:[UIImage imageNamed:@"beer.png"] tag:1];
-    [beerListViewController setTabBarItem:item1];
+    UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"You Beers" image:[UIImage imageNamed:@"you_beer.png"] tag:1];
+    [debitBeerListViewController setTabBarItem:item1];
     
-    UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"Account" image:[UIImage imageNamed:@"account.png"] tag:2];
-    [userDetailsViewController setTabBarItem:item2];
+    UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"They Beers" image:[UIImage imageNamed:@"they_beer.png"] tag:2];
+    [creditBeerListViewController setTabBarItem:item2];
+    
+    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"Account" image:[UIImage imageNamed:@"account.png"] tag:3];
+    [thirdNavigationController setTabBarItem:item3];
 
     
     // Launch login as root view

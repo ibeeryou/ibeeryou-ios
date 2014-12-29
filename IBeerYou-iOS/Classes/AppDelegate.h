@@ -20,7 +20,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "BeersListViewController.h"
+#import "DebitBeersListViewController.h"
 #import "UserDetailsViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

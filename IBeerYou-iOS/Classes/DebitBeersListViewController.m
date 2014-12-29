@@ -1,21 +1,21 @@
 //
-//  BeersListViewController.m
+//  DebitBeersListViewController.m
 //  IBeerYou-iOS
 //
 //  Created by Jean Loup Yu on 08/12/14.
 //
 //
 
-//
 
-#import "BeersListViewController.h"
+#import "DebitBeersListViewController.h"
 #import "NewBeerViewController.h"
 #import "Parse/Parse.h"
 
-@implementation BeersListViewController
+@implementation DebitBeersListViewController
 
 @synthesize beerArray;
 
+// TODO: delete duplicated code with CreditBeersListViewController
 
 #pragma mark - View lifecycle
 
@@ -23,7 +23,7 @@
 {
     [super viewDidLoad];
     
-    [self setTitle:@"Beers"];
+    [self setTitle:@"You Owe Beers"];
     
     [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshButtonHandler:)]];
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBeerButtonHandler:)]];

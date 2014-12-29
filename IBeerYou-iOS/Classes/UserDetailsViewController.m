@@ -34,7 +34,7 @@
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"Facebook Profile";
+        self.title = @"My Profile";
         
         // Create array for table row titles
         _rowTitleArray = @[@"Location", @"Gender", @"Date of Birth", @"Relationship", @"Email"];

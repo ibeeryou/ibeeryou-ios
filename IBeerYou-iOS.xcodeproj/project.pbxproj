@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080196061A51FF76000EF5D9 /* CreditBeersListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 080196051A51FF76000EF5D9 /* CreditBeersListViewController.m */; };
+		0801960B1A520882000EF5D9 /* they_beer.png in Resources */ = {isa = PBXBuildFile; fileRef = 080196071A520882000EF5D9 /* they_beer.png */; };
+		0801960C1A520882000EF5D9 /* they_beer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 080196081A520882000EF5D9 /* they_beer@2x.png */; };
+		0801960D1A520882000EF5D9 /* you_beer.png in Resources */ = {isa = PBXBuildFile; fileRef = 080196091A520882000EF5D9 /* you_beer.png */; };
+		0801960E1A520882000EF5D9 /* you_beer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0801960A1A520882000EF5D9 /* you_beer@2x.png */; };
 		083BD4551A48DF8200CAEA07 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 083BD4511A48DF8200CAEA07 /* account.png */; };
 		083BD4561A48DF8200CAEA07 /* account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 083BD4521A48DF8200CAEA07 /* account@2x.png */; };
 		083BD4571A48DF8200CAEA07 /* beer.png in Resources */ = {isa = PBXBuildFile; fileRef = 083BD4531A48DF8200CAEA07 /* beer.png */; };
@@ -29,7 +34,7 @@
 		59BAEB641A23C29E00C031B8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59BAEB511A23C29E00C031B8 /* InfoPlist.strings */; };
 		59BAEB661A23C29E00C031B8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BAEB551A23C29E00C031B8 /* main.m */; };
 		59BFD0FF1A3657A5002BC972 /* NewBeerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BFD0FE1A3657A5002BC972 /* NewBeerViewController.m */; };
-		59BFD1011A36599A002BC972 /* BeersListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BFD1001A36599A002BC972 /* BeersListViewController.m */; };
+		59BFD1011A36599A002BC972 /* DebitBeersListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BFD1001A36599A002BC972 /* DebitBeersListViewController.m */; };
 		6D10F48316DD68E000690A0F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D10F48216DD68E000690A0F /* CoreLocation.framework */; };
 		8103BCCD19AD1F8900BCF4C7 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8103BCCB19AD1F8900BCF4C7 /* Bolts.framework */; };
 		8103BCCE19AD1F8900BCF4C7 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8103BCCC19AD1F8900BCF4C7 /* ParseFacebookUtils.framework */; };
@@ -48,6 +53,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		080196041A51FF3C000EF5D9 /* CreditBeersListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreditBeersListViewController.h; sourceTree = "<group>"; };
+		080196051A51FF76000EF5D9 /* CreditBeersListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditBeersListViewController.m; sourceTree = "<group>"; };
+		080196071A520882000EF5D9 /* they_beer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = they_beer.png; sourceTree = "<group>"; };
+		080196081A520882000EF5D9 /* they_beer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "they_beer@2x.png"; sourceTree = "<group>"; };
+		080196091A520882000EF5D9 /* you_beer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = you_beer.png; sourceTree = "<group>"; };
+		0801960A1A520882000EF5D9 /* you_beer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "you_beer@2x.png"; sourceTree = "<group>"; };
 		083BD4511A48DF8200CAEA07 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
 		083BD4521A48DF8200CAEA07 /* account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account@2x.png"; sourceTree = "<group>"; };
 		083BD4531A48DF8200CAEA07 /* beer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beer.png; sourceTree = "<group>"; };
@@ -74,10 +85,10 @@
 		59BAEB531A23C29E00C031B8 /* IBeerYou-iOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IBeerYou-iOS-Info.plist"; sourceTree = "<group>"; };
 		59BAEB541A23C29E00C031B8 /* IBeerYou-iOS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IBeerYou-iOS-Prefix.pch"; sourceTree = "<group>"; };
 		59BAEB551A23C29E00C031B8 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		59BFD0FC1A364D89002BC972 /* BeersListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeersListViewController.h; sourceTree = "<group>"; };
+		59BFD0FC1A364D89002BC972 /* DebitBeersListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebitBeersListViewController.h; sourceTree = "<group>"; };
 		59BFD0FD1A36574F002BC972 /* NewBeerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewBeerViewController.h; sourceTree = "<group>"; };
 		59BFD0FE1A3657A5002BC972 /* NewBeerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewBeerViewController.m; sourceTree = "<group>"; };
-		59BFD1001A36599A002BC972 /* BeersListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeersListViewController.m; sourceTree = "<group>"; };
+		59BFD1001A36599A002BC972 /* DebitBeersListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebitBeersListViewController.m; sourceTree = "<group>"; };
 		6D10F48216DD68E000690A0F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8103BCCB19AD1F8900BCF4C7 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		8103BCCC19AD1F8900BCF4C7 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -128,8 +139,10 @@
 			children = (
 				59BAEB3E1A23C29E00C031B8 /* AppDelegate.h */,
 				59BAEB3F1A23C29E00C031B8 /* AppDelegate.m */,
-				59BFD0FC1A364D89002BC972 /* BeersListViewController.h */,
-				59BFD1001A36599A002BC972 /* BeersListViewController.m */,
+				080196041A51FF3C000EF5D9 /* CreditBeersListViewController.h */,
+				080196051A51FF76000EF5D9 /* CreditBeersListViewController.m */,
+				59BFD0FC1A364D89002BC972 /* DebitBeersListViewController.h */,
+				59BFD1001A36599A002BC972 /* DebitBeersListViewController.m */,
 				59BAEB401A23C29E00C031B8 /* LoginViewController.h */,
 				59BAEB411A23C29E00C031B8 /* LoginViewController.m */,
 				59BFD0FD1A36574F002BC972 /* NewBeerViewController.h */,
@@ -144,6 +157,10 @@
 		59BAEB441A23C29E00C031B8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				080196071A520882000EF5D9 /* they_beer.png */,
+				080196081A520882000EF5D9 /* they_beer@2x.png */,
+				080196091A520882000EF5D9 /* you_beer.png */,
+				0801960A1A520882000EF5D9 /* you_beer@2x.png */,
 				083BD4511A48DF8200CAEA07 /* account.png */,
 				083BD4521A48DF8200CAEA07 /* account@2x.png */,
 				083BD4531A48DF8200CAEA07 /* beer.png */,
@@ -261,6 +278,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
+				TargetAttributes = {
+					D4DA79E914D3345A0055F672 = {
+						DevelopmentTeam = VFRJXCB5LP;
+					};
+				};
 			};
 			buildConfigurationList = D4DA79E414D3345A0055F672 /* Build configuration list for PBXProject "IBeerYou-iOS" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -290,10 +312,14 @@
 				59BAEB631A23C29E00C031B8 /* TableHeaderView.xib in Resources */,
 				59BAEB5C1A23C29E00C031B8 /* Icon.png in Resources */,
 				59BAEB601A23C29E00C031B8 /* login-button-small.png in Resources */,
+				0801960C1A520882000EF5D9 /* they_beer@2x.png in Resources */,
 				083BD4581A48DF8200CAEA07 /* beer@2x.png in Resources */,
+				0801960B1A520882000EF5D9 /* they_beer.png in Resources */,
 				59BAEB5E1A23C29E00C031B8 /* login-button-small-pressed.png in Resources */,
+				0801960E1A520882000EF5D9 /* you_beer@2x.png in Resources */,
 				59BAEB611A23C29E00C031B8 /* login-button-small@2x.png in Resources */,
 				59BAEB591A23C29E00C031B8 /* Default-568h@2x.png in Resources */,
+				0801960D1A520882000EF5D9 /* you_beer.png in Resources */,
 				59BAEB5A1A23C29E00C031B8 /* Default.png in Resources */,
 				59BAEB5D1A23C29E00C031B8 /* Icon@2x.png in Resources */,
 				083BD4571A48DF8200CAEA07 /* beer.png in Resources */,
@@ -310,12 +336,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59BFD1011A36599A002BC972 /* BeersListViewController.m in Sources */,
+				59BFD1011A36599A002BC972 /* DebitBeersListViewController.m in Sources */,
 				59BAEB581A23C29E00C031B8 /* UserDetailsViewController.m in Sources */,
 				59BAEB571A23C29E00C031B8 /* LoginViewController.m in Sources */,
 				59BAEB661A23C29E00C031B8 /* main.m in Sources */,
 				59BFD0FF1A3657A5002BC972 /* NewBeerViewController.m in Sources */,
 				59BAEB561A23C29E00C031B8 /* AppDelegate.m in Sources */,
+				080196061A51FF76000EF5D9 /* CreditBeersListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

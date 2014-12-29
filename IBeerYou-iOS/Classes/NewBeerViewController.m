@@ -97,7 +97,7 @@
 {
     PFUser *user = [_users objectAtIndex:row];
     _selected_user = user;
-    return  user.email;
+    return  user[@"profile"][@"name"];
 }
 
 
