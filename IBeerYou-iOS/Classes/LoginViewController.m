@@ -56,7 +56,7 @@
 
 - (IBAction)loginButtonTouchHandler:(id)sender  {
     // Set permissions required from the facebook user account
-    NSArray *permissionsArray = @[ @"user_about_me", @"user_birthday", @"user_location", @"email"];
+    NSArray *permissionsArray = @[ @"user_about_me", @"user_birthday", @"user_location", @"email", @"user_friends"];
 
     // Login PFUser using Facebook
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
@@ -115,6 +115,7 @@
                         
                         userProfile[@"pictureURL"] = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID];
                         
+                        [[PFUser currentUser] setObject:facebookID forKey:@"id"];
                         [[PFUser currentUser] setObject:userProfile forKey:@"profile"];
                         [[PFUser currentUser] setObject:email forKey:@"email"];
                         [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
