@@ -56,7 +56,7 @@
 
 - (IBAction)loginButtonTouchHandler:(id)sender  {
     // Set permissions required from the facebook user account
-    NSArray *permissionsArray = @[ @"user_about_me", @"user_relationships", @"user_birthday", @"user_location", @"email"];
+    NSArray *permissionsArray = @[ @"user_about_me", @"user_birthday", @"user_location", @"email"];
 
     // Login PFUser using Facebook
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
@@ -80,6 +80,74 @@
         } else {
             if (user.isNew) {
                 NSLog(@"User with facebook signed up and logged in!");
+                
+                // Get user's personal information
+                [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                    if (!error) {
+                        // Set user's information
+                        NSDictionary *userData = (NSDictionary *)result;
+                        NSMutableDictionary *userProfile = [NSMutableDictionary dictionaryWithCapacity:7];
+                        
+                        NSString *facebookID = userData[@"id"];
+                        if (facebookID) {
+                            userProfile[@"facebookId"] = facebookID;
+                        }
+                        
+                        NSString *name = userData[@"name"];
+                        if (name) {
+                            userProfile[@"name"] = name;
+                        }
+                        
+                        NSString *email = userData[@"email"];
+                        if (email) {
+                            userProfile[@"email"] = email;
+                        }
+                        
+                        NSString *location = userData[@"location"][@"name"];
+                        if (location) {
+                            userProfile[@"location"] = location;
+                        }
+                        
+                        NSString *birthday = userData[@"birthday"];
+                        if (birthday) {
+                            userProfile[@"birthday"] = birthday;
+                        }
+                        
+                        userProfile[@"pictureURL"] = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID];
+                        
+                        [[PFUser currentUser] setObject:userProfile forKey:@"profile"];
+                        [[PFUser currentUser] setObject:email forKey:@"email"];
+                        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                            // Get user's friend information
+                            [FBRequestConnection startForMyFriendsWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                                if (!error) {
+                                    NSArray *data = [result objectForKey:@"data"];
+                                    NSMutableArray *facebookIds = [[NSMutableArray alloc] initWithCapacity:data.count];
+                                    
+                                    NSLog(@"Found: %lu friends", data.count);
+                                    NSLog(@"friends: %@", result);
+                                    
+                                    for (NSDictionary *friendData in data) {
+                                        [facebookIds addObject:[friendData objectForKey:@"id"]];
+                                    }
+                                    
+                                    [[PFUser currentUser] setObject:facebookIds forKey:@"facebookFriends"];
+                                    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                        // We're in!
+                                        [self dismissViewControllerAnimated:YES completion:NULL];
+                                    }];
+                                } else {
+                                    [self showErrorAlert];
+                                }
+                            }];
+                        }];
+                    } else {
+                        [self showErrorAlert];
+                    }
+                }];
+                
+                
+                
             } else {
                 NSLog(@"User with facebook logged in!");
             }
@@ -88,6 +156,16 @@
     }];
 
     [_activityIndicator startAnimating]; // Show loading indicator until login is finished
+}
+
+#pragma mark - ()
+
+- (void)showErrorAlert {
+    [[[UIAlertView alloc] initWithTitle:@"Something went wrong"
+                                message:@"We were not able to create your profile. Please try again."
+                               delegate:nil
+                      cancelButtonTitle:@"OK"
+                      otherButtonTitles:nil] show];
 }
 
 #pragma mark -
