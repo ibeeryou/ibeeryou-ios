@@ -280,7 +280,7 @@
 				LastUpgradeCheck = 0610;
 				TargetAttributes = {
 					D4DA79E914D3345A0055F672 = {
-						DevelopmentTeam = VFRJXCB5LP;
+						DevelopmentTeam = 4A4D5YG96X;
 					};
 				};
 			};
@@ -431,6 +431,8 @@
 		D4DA7A0314D3345A0055F672 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Benoit Lafontaine (57834S29W3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Benoit Lafontaine (57834S29W3)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -440,12 +442,15 @@
 				GCC_PREFIX_HEADER = "IBeerYou-iOS/Supporting Files/IBeerYou-iOS-Prefix.pch";
 				INFOPLIST_FILE = "IBeerYou-iOS/Supporting Files/IBeerYou-iOS-Info.plist";
 				PRODUCT_NAME = "IBeerYou-iOS";
+				PROVISIONING_PROFILE = "41f87588-a997-4b63-91d5-2e8e5365474b";
 			};
 			name = Debug;
 		};
 		D4DA7A0414D3345A0055F672 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Benoit Lafontaine";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -455,6 +460,7 @@
 				GCC_PREFIX_HEADER = "IBeerYou-iOS/Supporting Files/IBeerYou-iOS-Prefix.pch";
 				INFOPLIST_FILE = "IBeerYou-iOS/Supporting Files/IBeerYou-iOS-Info.plist";
 				PRODUCT_NAME = "IBeerYou-iOS";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
