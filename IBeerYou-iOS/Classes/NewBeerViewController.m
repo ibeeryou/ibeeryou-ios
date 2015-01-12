@@ -24,10 +24,11 @@
 - (void)loadView
 {
     [super loadView];
-
-    //load users with all the users of the database
+    
+    // retrieve friends of current users
     PFQuery *query = [PFUser query];
-    query.limit = 100;
+    [query whereKey:@"id" containedIn:[[PFUser currentUser] objectForKey:@"facebookFriends"]];
+    [query setLimit:100];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             // The find succeeded. The first 100 objects are available in objects
