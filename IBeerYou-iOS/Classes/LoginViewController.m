@@ -80,83 +80,97 @@
         } else {
             if (user.isNew) {
                 NSLog(@"User with facebook signed up and logged in!");
-                
-                // Get user's personal information
-                [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                    if (!error) {
-                        // Set user's information
-                        NSDictionary *userData = (NSDictionary *)result;
-                        NSMutableDictionary *userProfile = [NSMutableDictionary dictionaryWithCapacity:7];
-                        
-                        NSString *facebookID = userData[@"id"];
-                        if (facebookID) {
-                            userProfile[@"facebookId"] = facebookID;
-                        }
-                        
-                        NSString *name = userData[@"name"];
-                        if (name) {
-                            userProfile[@"name"] = name;
-                        }
-                        
-                        NSString *email = userData[@"email"];
-                        if (email) {
-                            userProfile[@"email"] = email;
-                        }
-                        
-                        NSString *location = userData[@"location"][@"name"];
-                        if (location) {
-                            userProfile[@"location"] = location;
-                        }
-                        
-                        NSString *birthday = userData[@"birthday"];
-                        if (birthday) {
-                            userProfile[@"birthday"] = birthday;
-                        }
-                        
-                        userProfile[@"pictureURL"] = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID];
-                        
-                        [[PFUser currentUser] setObject:facebookID forKey:@"id"];
-                        [[PFUser currentUser] setObject:userProfile forKey:@"profile"];
-                        [[PFUser currentUser] setObject:email forKey:@"email"];
-                        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                            // Get user's friend information
-                            [FBRequestConnection startForMyFriendsWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                                if (!error) {
-                                    NSArray *data = [result objectForKey:@"data"];
-                                    NSMutableArray *facebookIds = [[NSMutableArray alloc] initWithCapacity:data.count];
-                                    
-                                    NSLog(@"Found: %lu friends", data.count);
-                                    NSLog(@"friends: %@", result);
-                                    
-                                    for (NSDictionary *friendData in data) {
-                                        [facebookIds addObject:[friendData objectForKey:@"id"]];
-                                    }
-                                    
-                                    [[PFUser currentUser] setObject:facebookIds forKey:@"facebookFriends"];
-                                    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                                        // We're in!
-                                        [self dismissViewControllerAnimated:YES completion:NULL];
-                                    }];
-                                } else {
-                                    [self showErrorAlert];
-                                }
-                            }];
-                        }];
-                    } else {
-                        [self showErrorAlert];
-                    }
-                }];
-                
-                
-                
             } else {
                 NSLog(@"User with facebook logged in!");
             }
+            [self _retrieveFacebookUserInfoAndSave];
             [self _presentTabBarViewControllerAnimated:YES];
         }
     }];
 
     [_activityIndicator startAnimating]; // Show loading indicator until login is finished
+}
+
+
+#pragma mark -
+#pragma mark TabBarViewController
+
+- (void)_presentTabBarViewControllerAnimated:(BOOL)animated {
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    [appDelegate.window setRootViewController:appDelegate.tabBarController];
+}
+
+#pragma mark -
+#pragma mark UserFacebookInfoAndSave
+
+- (void)_retrieveFacebookUserInfoAndSave {
+
+    // Get user's personal information
+    [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        if (!error) {
+            // Set user's information
+            NSDictionary *userData = (NSDictionary *)result;
+            NSMutableDictionary *userProfile = [NSMutableDictionary dictionaryWithCapacity:7];
+            
+            NSString *facebookID = userData[@"id"];
+            if (facebookID) {
+                userProfile[@"facebookId"] = facebookID;
+            }
+            
+            NSString *name = userData[@"name"];
+            if (name) {
+                userProfile[@"name"] = name;
+            }
+            
+            NSString *email = userData[@"email"];
+            if (email) {
+                userProfile[@"email"] = email;
+            }
+            
+            NSString *location = userData[@"location"][@"name"];
+            if (location) {
+                userProfile[@"location"] = location;
+            }
+            
+            NSString *birthday = userData[@"birthday"];
+            if (birthday) {
+                userProfile[@"birthday"] = birthday;
+            }
+            
+            userProfile[@"pictureURL"] = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID];
+            
+            [[PFUser currentUser] setObject:facebookID forKey:@"id"];
+            [[PFUser currentUser] setObject:userProfile forKey:@"profile"];
+            [[PFUser currentUser] setObject:email forKey:@"email"];
+            [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                // Get user's friend information
+                [FBRequestConnection startForMyFriendsWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                    if (!error) {
+                        NSArray *data = [result objectForKey:@"data"];
+                        NSMutableArray *facebookIds = [[NSMutableArray alloc] initWithCapacity:data.count];
+                        
+                        NSLog(@"Found: %lu friends", data.count);
+                        NSLog(@"friends: %@", result);
+                        
+                        for (NSDictionary *friendData in data) {
+                            [facebookIds addObject:[friendData objectForKey:@"id"]];
+                        }
+                        
+                        [[PFUser currentUser] setObject:facebookIds forKey:@"facebookFriends"];
+                        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                            // We're in!
+                            [self dismissViewControllerAnimated:YES completion:NULL];
+                        }];
+                    } else {
+                        [self showErrorAlert];
+                    }
+                }];
+            }];
+        } else {
+            [self showErrorAlert];
+        }
+    }];
+
 }
 
 #pragma mark - ()
@@ -167,14 +181,6 @@
                                delegate:nil
                       cancelButtonTitle:@"OK"
                       otherButtonTitles:nil] show];
-}
-
-#pragma mark -
-#pragma mark TabBarViewController
-
-- (void)_presentTabBarViewControllerAnimated:(BOOL)animated {
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    [appDelegate.window setRootViewController:appDelegate.tabBarController];
 }
 
 
