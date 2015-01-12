@@ -43,6 +43,8 @@
     PFQuery *postQuery = [PFQuery queryWithClassName:@"Beer"];
     [postQuery whereKey:@"debitor" equalTo:[PFUser currentUser]];
     
+    [postQuery includeKey:@"creditor"];
+    
     // Run the query
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -79,7 +81,7 @@
     
     // Configure the cell with the textContent of the Beer as the cell's text label
     PFObject *beer = [beerArray objectAtIndex:indexPath.row];
-    [cell.textLabel setText:[[beer objectForKey:@"creditor"] fetchIfNeeded][@"profile"][@"name"]];
+    [cell.textLabel setText:[beer objectForKey:@"creditor"][@"profile"][@"name"]];
     
     return cell;
 }
