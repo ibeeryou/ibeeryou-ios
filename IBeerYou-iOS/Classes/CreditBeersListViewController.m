@@ -47,8 +47,36 @@
     // Run the query
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
+            // do the count by debitor
+            NSArray *sortedBeers;
+            sortedBeers = [objects sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+                NSDate *first = [(PFObject*)a objectForKey:@"debitor"][@"id"];
+                NSDate *second = [(PFObject*)b objectForKey:@"debitor"][@"id"];
+                return [first compare:second];
+            }];
+            
+            // group and count
+            PFObject *lastBeer = nil;
+            NSMutableArray* groupedBeers = [[NSMutableArray alloc] init];
+            int index = 0;
+            for (PFObject *beer in sortedBeers) {
+                if (lastBeer == nil || [lastBeer objectForKey:@"debitor"][@"id"] != [beer objectForKey:@"debitor"][@"id"]){
+                    [groupedBeers addObject:beer];
+                    lastBeer = beer;
+                    index = 0;
+                }
+                index++;
+                [lastBeer setObject:[NSNumber numberWithInt:index] forKey:@"beerCount"];
+            }
+            
+            NSArray *groupedAndCountBeers =[groupedBeers sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+                NSDate *first = [(PFObject*)a objectForKey:@"beerCount"];
+                NSDate *second = [(PFObject*)b objectForKey:@"beerCount"];
+                return -[first compare:second];
+            }];
+            
             //Save results and update the table
-            beerArray = objects;
+            beerArray = groupedAndCountBeers;
             [self.tableView reloadData];
         }
     }];
@@ -80,7 +108,8 @@
     
     // Configure the cell with the textContent of the Beer as the cell's text label
     PFObject *beer = [beerArray objectAtIndex:indexPath.row];
-    [cell.textLabel setText:[beer objectForKey:@"debitor"][@"profile"][@"name"]];
+    NSString* text = [NSString stringWithFormat:@"%@ (%@)", [beer objectForKey:@"debitor"][@"profile"][@"name"], [beer objectForKey:@"beerCount"]];
+    [cell.textLabel setText:text];
     
     return cell;
 }
