@@ -166,6 +166,17 @@
                     }
                 }];
             }];
+            // link device with user
+            [[PFInstallation currentInstallation] setObject:[PFUser currentUser] forKey:@"user"];
+            [[PFInstallation currentInstallation] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    NSLog(@"registered");
+                } else {
+                    NSLog(@"ERROR");
+                    [self showErrorAlert];
+                }
+            }];
+
         } else {
             [self showErrorAlert];
         }
