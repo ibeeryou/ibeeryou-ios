@@ -7,7 +7,7 @@
 //
 
 #import "DebitBeersListViewController.h"
-#import "NewBeerViewController.h"
+#import "AddBeerViewController.h"
 #import "Parse/Parse.h"
 
 @implementation DebitBeersListViewController
@@ -84,8 +84,8 @@
 
 - (void)addBeerButtonHandler:(id)sender
 {
-    NewBeerViewController *newBeerViewController = [[NewBeerViewController alloc] init];
-    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:newBeerViewController] animated:YES completion:nil];
+    AddBeerViewController *friendPickerController = [[AddBeerViewController alloc] initWithNibName:@"AddBeerViewController" bundle:nil];
+    [self.navigationController pushViewController:friendPickerController animated:YES];
 }
 
 

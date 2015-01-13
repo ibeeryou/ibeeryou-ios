@@ -12,6 +12,8 @@
 		0801960C1A520882000EF5D9 /* they_beer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 080196081A520882000EF5D9 /* they_beer@2x.png */; };
 		0801960D1A520882000EF5D9 /* you_beer.png in Resources */ = {isa = PBXBuildFile; fileRef = 080196091A520882000EF5D9 /* you_beer.png */; };
 		0801960E1A520882000EF5D9 /* you_beer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0801960A1A520882000EF5D9 /* you_beer@2x.png */; };
+		0801961D1A649311000EF5D9 /* AddBeerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0801961B1A649311000EF5D9 /* AddBeerViewController.m */; };
+		0801961E1A649311000EF5D9 /* AddBeerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0801961C1A649311000EF5D9 /* AddBeerViewController.xib */; };
 		083BD4551A48DF8200CAEA07 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 083BD4511A48DF8200CAEA07 /* account.png */; };
 		083BD4561A48DF8200CAEA07 /* account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 083BD4521A48DF8200CAEA07 /* account@2x.png */; };
 		083BD4571A48DF8200CAEA07 /* beer.png in Resources */ = {isa = PBXBuildFile; fileRef = 083BD4531A48DF8200CAEA07 /* beer.png */; };
@@ -59,6 +61,9 @@
 		080196081A520882000EF5D9 /* they_beer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "they_beer@2x.png"; sourceTree = "<group>"; };
 		080196091A520882000EF5D9 /* you_beer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = you_beer.png; sourceTree = "<group>"; };
 		0801960A1A520882000EF5D9 /* you_beer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "you_beer@2x.png"; sourceTree = "<group>"; };
+		0801961A1A649311000EF5D9 /* AddBeerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddBeerViewController.h; path = ../AddBeerViewController.h; sourceTree = "<group>"; };
+		0801961B1A649311000EF5D9 /* AddBeerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddBeerViewController.m; path = ../AddBeerViewController.m; sourceTree = "<group>"; };
+		0801961C1A649311000EF5D9 /* AddBeerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddBeerViewController.xib; path = ../AddBeerViewController.xib; sourceTree = "<group>"; };
 		083BD4511A48DF8200CAEA07 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
 		083BD4521A48DF8200CAEA07 /* account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account@2x.png"; sourceTree = "<group>"; };
 		083BD4531A48DF8200CAEA07 /* beer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beer.png; sourceTree = "<group>"; };
@@ -137,6 +142,8 @@
 		59BAEB3D1A23C29E00C031B8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0801961A1A649311000EF5D9 /* AddBeerViewController.h */,
+				0801961B1A649311000EF5D9 /* AddBeerViewController.m */,
 				59BAEB3E1A23C29E00C031B8 /* AppDelegate.h */,
 				59BAEB3F1A23C29E00C031B8 /* AppDelegate.m */,
 				080196041A51FF3C000EF5D9 /* CreditBeersListViewController.h */,
@@ -157,6 +164,7 @@
 		59BAEB441A23C29E00C031B8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0801961C1A649311000EF5D9 /* AddBeerViewController.xib */,
 				080196071A520882000EF5D9 /* they_beer.png */,
 				080196081A520882000EF5D9 /* they_beer@2x.png */,
 				080196091A520882000EF5D9 /* you_beer.png */,
@@ -323,6 +331,7 @@
 				59BAEB5A1A23C29E00C031B8 /* Default.png in Resources */,
 				59BAEB5D1A23C29E00C031B8 /* Icon@2x.png in Resources */,
 				083BD4571A48DF8200CAEA07 /* beer.png in Resources */,
+				0801961E1A649311000EF5D9 /* AddBeerViewController.xib in Resources */,
 				59BAEB5B1A23C29E00C031B8 /* Default@2x.png in Resources */,
 				083BD4561A48DF8200CAEA07 /* account@2x.png in Resources */,
 				083BD4551A48DF8200CAEA07 /* account.png in Resources */,
@@ -336,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0801961D1A649311000EF5D9 /* AddBeerViewController.m in Sources */,
 				59BFD1011A36599A002BC972 /* DebitBeersListViewController.m in Sources */,
 				59BAEB581A23C29E00C031B8 /* UserDetailsViewController.m in Sources */,
 				59BAEB571A23C29E00C031B8 /* LoginViewController.m in Sources */,
