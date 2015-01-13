@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "_default": {
+            "link": "iby"
+        }, 
+        "iby": {
+            "applicationId": "plGSnVeWDeA5jS89IFdV1pMDTQHATzOu6rGy89WI", 
+            "masterKey": "X9S2hi421crLsTthPETmlyJCf1Hz5W2dVKCxcexF"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.3"
+    }
+}
