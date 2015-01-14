@@ -122,10 +122,7 @@
             // Parse the data received
             NSDictionary *userData = (NSDictionary *)result;
             
-            NSLog(@"COUCOU : %@", userData);
-            
             NSString *facebookID = userData[@"id"];
-            
             
             NSMutableDictionary *userProfile = [NSMutableDictionary dictionaryWithCapacity:7];
             
